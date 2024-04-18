@@ -5,6 +5,11 @@ user can enter raffle
 at a given time the raffle will end 
 the random winner is calculated
 
+## some of the raffle contract has been deployed on Sepolia Testnet and Avalance Testnet . 
+Check them out 
+- Sepolia testnet address on ([0x652fccd0af69a45543ee7f328e1a3009c5d1fa70](https://sepolia.etherscan.io/address/0x652fccd0af69a45543ee7f328e1a3009c5d1fa70))
+- Avalance testnet address on ([0xe813781e2cbd5a027f68d8b2a1b3944f51b67725](https://testnet.snowtrace.io/address/0xe813781e2cbd5a027f68d8b2a1b3944f51b67725))
+
 ### Requirement 
 To use this repo locally , you need to have the following installed on your machine
 -  Foundry   , foundry can be install using the documentation  [here](https://book.getfoundry.sh/)

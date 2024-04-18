@@ -44,13 +44,15 @@ contract HelperConfig is Script {
     constructor() {
         if (block.chainid == 11155111) {
             s_activeNetworkConfig = getSepoliaConfig();
+        }
+        if (block.chainid == 43113) {
+            s_activeNetworkConfig = getFugiConfig();
         } else {
             s_activeNetworkConfig = getOrCreateAnvilConfig();
         }
     }
 
     function getSepoliaConfig() public view returns (NetworkConfig memory) {
-        // linkTokenAddress:0x474e34a077df58807dbe9c96d3c009b23b3c6d0cce433e59bbf5b34f823bc56c
         return
             NetworkConfig({
                 enteranceFee: 1e8,
@@ -58,8 +60,22 @@ contract HelperConfig is Script {
                 vrfCordinator: 0x8103B0A8A00be2DDC778e6e7eaa21791Cd364625,
                 keyHash: 0x474e34a077df58807dbe9c96d3c009b23b3c6d0cce433e59bbf5b34f823bc56c,
                 subId: 10882,
-                callbackGasLimit: 30000,
+                callbackGasLimit: 500000,
                 linkTokenAddress: 0x779877A7B0D9E8603169DdbD7836e478b4624789,
+                deployerKey: vm.envUint("PRIVATE_KEY")
+            });
+    }
+
+    function getFugiConfig() public view returns (NetworkConfig memory) {
+        return
+            NetworkConfig({
+                enteranceFee: 1e8,
+                interval: 500,
+                vrfCordinator: 0x2eD832Ba664535e5886b75D64C46EB9a228C2610,
+                keyHash: 0x354d2f95da55398f44b7cff77da56283d9c6c829a4bdf1bbcaf2ad6a4d081f61,
+                subId: 0,
+                callbackGasLimit: 500000,
+                linkTokenAddress: 0x0b9d5D9136855f6FEc3c0993feE6E9CE8a297846,
                 deployerKey: vm.envUint("PRIVATE_KEY")
             });
     }
@@ -89,7 +105,7 @@ contract HelperConfig is Script {
                     vrfCordinator: address(vrfCordinator),
                     keyHash: 0x474e34a077df58807dbe9c96d3c009b23b3c6d0cce433e59bbf5b34f823bc56c,
                     subId: 0,
-                    callbackGasLimit: 30000,
+                    callbackGasLimit: 500000,
                     linkTokenAddress: address(linkToken),
                     deployerKey: DEFAULT_ANVIL_KEY
                 });
